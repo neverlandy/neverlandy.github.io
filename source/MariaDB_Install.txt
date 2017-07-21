@@ -1,0 +1,107 @@
+=========================
+MariaDB
+=========================
+
+はじめに
+==========
+本ドキュメントはCentOS7 よりMySQLに変わり標準データベースソフトウェアとなった
+MariaDBのインストール、初期設定に関する内容を記述します。
+
+インストール手順
+==================
+.. note::
+
+ | 本手順はCentOS7.xを想定して書かれています。
+ | 特段の記載がない場合を除き、rootユーザーで作業することを想定しています。
+
+**1. リポジトリにepelを追加**
+
+ ``# yum install -y epel-release``
+
+**2. MariaDBのインストール**
+
+ ``# yum install -y mariadb mariadb-devel mariadb-server``
+
+**3. バージョンの確認**
+
+ ``# mysql -V``
+
+.. hint::
+
+ | バージョン確認時の結果表示（例
+ | [root@localhost ~]# mysql -V
+ | mysql  Ver 15.1 Distrib 5.5.52-MariaDB, for Linux (x86_64) using readline 5.1
+
+.. note::
+
+ | 利用可能リポジトリ確認
+ | [root@localhost ~]# yum repolist enabled
+ | 読み込んだプラグイン:fastestmirror
+ | Loading mirror speeds from cached hostfile
+ |  * base: ftp.iij.ad.jp
+ |  * epel: ftp.jaist.ac.jp
+ |  * extras: ftp.iij.ad.jp
+ |  * updates: ftp.iij.ad.jp
+ | リポジトリー ID       リポジトリー名                                      状態
+ | base/7/x86_64         CentOS-7 - Base                                      9,363
+ | epel/x86_64           Extra Packages for Enterprise Linux 7 - x86_64      11,919
+ | extras/7/x86_64       CentOS-7 - Extras                                      449
+ | updates/7/x86_64      CentOS-7 - Updates                                   2,100
+ | repolist: 23,831
+
+
+文字コードの変更
+==========================
+
+  ``# vi /etc/my.cnf``
+
+ | [mysqld]
+ | datadir=/var/lib/mysql
+ | socket=/var/lib/mysql/mysql.sock
+ | # Disabling symbolic-links is recommended to prevent assorted security risks
+ | symbolic-links=0
+ | # Settings user and group are ignored when systemd is used.
+ | # If you need to run mysqld under a different user or group,
+ | # customize your systemd unit file for mariadb according to the
+ | # instructions in http://fedoraproject.org/wiki/Systemd
+ | character-set-server=utf8
+ | 
+ | [mysqld_safe]
+ | log-error=/var/log/mariadb/mariadb.log
+ | pid-file=/var/run/mariadb/mariadb.pid
+ | 
+ | #
+ | # include all files from the config directory
+ | #
+ | !includedir /etc/my.cnf.d
+
+MariaDB サービス起動
+==========================
+
+ | ``# systemctl is-enable mariadb.service``
+ | ``# systemctl enable mariadb.service``
+ | ``# systemctl start mariadb.service``
+
+
+DB初期設定
+==========================
+
+  ``# mysql_secure_installation``
+
+
+初期データベースの作成
+==========================
+
+  ``# create database dbtest``
+
+
+データベースユーザーの追加
+==========================
+
+ | ``# mysql -u root -p``
+ | [パスワード]を入力
+ | 
+ | # 作成したデータベース：dbtestに全ての権限を持ったユーザー dbuser@localhost を登録する
+ | ``grant all on dbtest.* to dbuser@localhost identified by 'password';``
+
+
