@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MariaDB &mdash; text 2 ドキュメント</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="genindex.html"/>
+        <link rel="search" title="検索" href="search.html"/>
+    <link rel="top" title="text 2 ドキュメント" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> text
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CentOS7_Install.html">内容</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CentOS7_Install.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">text</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>MariaDB</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/MariaDB_Install_.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mariadb">
+<h1>MariaDB<a class="headerlink" href="#mariadb" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>本ドキュメントはCentOS7 よりMySQLに変わり標準データベースソフトウェアとなった
+MariaDBのインストール、初期設定に関する内容を記述します。</p>
+</div>
+<div class="section" id="id2">
+<h2>インストール手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">本手順はCentOS7.xを想定して書かれています。</div>
+<div class="line">特段の記載がない場合を除き、rootユーザーで作業することを想定しています。</div>
+</div>
+</div>
+<p><strong>1. YUMリポジトリにEPELを追加</strong></p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">epel-release</span></code></div></blockquote>
+<p><strong>2. MariaDBのインストール</strong></p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">mariadb</span> <span class="pre">mariadb-devel</span> <span class="pre">mariadb-server</span></code></div></blockquote>
+<p><strong>3. バージョンの確認</strong></p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">mysql</span> <span class="pre">-V</span></code></div></blockquote>
+<div class="admonition hint">
+<p class="first admonition-title">ヒント</p>
+<div class="last line-block">
+<div class="line">バージョン確認時の結果表示（例</div>
+<div class="line">[<a class="reference external" href="mailto:root&#37;&#52;&#48;localhost">root<span>&#64;</span>localhost</a> ~]# mysql -V</div>
+<div class="line">mysql  Ver 15.1 Distrib 5.5.52-MariaDB, for Linux (x86_64) using readline 5.1</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">利用可能リポジトリ確認</div>
+<div class="line">yum repolist enabled</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="ansible">
+<h2>Ansibleのメリット<a class="headerlink" href="#ansible" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div>Ansibleには下記のような利点があります。このことからAnsibleは構成管理ツールとして優位性があると考えられます。</div></blockquote>
+<ul class="simple">
+<li>冪等性</li>
+<li>エージェントレス</li>
+<li>モジュールによる拡張</li>
+<li>コードがシンプル</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>Ansibleの構成要素<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div>Ansibleを使いこなすにあたって特に重要な3つの要素を記載します。</div></blockquote>
+<ul class="simple">
+<li>インベントリファイル</li>
+</ul>
+<blockquote>
+<div><p>Ansibleの実行対象を記述したファイルとなります。 <code class="docutils literal"><span class="pre">/etc/ansible/hosts</span></code> に下記を追記します。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">testservers</span><span class="p">]</span>
+<span class="n">test01</span> <span class="n">ansible_host</span><span class="o">=</span><span class="s2">&quot;対象サーバのIPアドレス&quot;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">ansible</span> <span class="pre">all</span> <span class="pre">-m</span> <span class="pre">ping</span></code> を実行し、対象サーバが <strong>SUCCESS</strong> となることを確認しましょう。</p>
+</div></blockquote>
+<ul class="simple">
+<li>Playbook</li>
+</ul>
+<blockquote>
+<div>Ansibleの実行処理をコードで記述したものとなります。このYML形式のコードを元にAnsibleは処理を実行します。</div></blockquote>
+<ul class="simple">
+<li>コンフィグファイル</li>
+</ul>
+<div class="line-block">
+<div class="line">Ansibleの設定情報が記載されています。</div>
+<div class="line">設定変更が必要な際 <code class="docutils literal"><span class="pre">/etc/ansible/ansible.cfg</span></code> を編集します。</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>ベストプラクティス<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>モジュール<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="playbook">
+<h2>ログ収集Playbook<a class="headerlink" href="#playbook" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id6">
+<h2>システム情報収集Playbook<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id7">
+<h2>Playbook実行結果<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id8">
+<h2>トラブルシューティング<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, YN.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
