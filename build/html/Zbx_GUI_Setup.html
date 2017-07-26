@@ -1,0 +1,259 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Zabbix Web管理画面 初期設定 &#8212; nyproject 1.0 ドキュメント</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="MariaDB" href="MariaDB_Install.html" />
+    <link rel="prev" title="Zabbix" href="Zabbix_Install.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="zabbix-web">
+<h1>Zabbix Web管理画面 初期設定<a class="headerlink" href="#zabbix-web" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>本ドキュメントは、ZabbixサーバのWeb管理画面の初期セットアップ手順を記述したものです。</p>
+</div>
+<div class="section" id="web">
+<h2>Web管理画面 設定手順<a class="headerlink" href="#web" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">本手順は Zabbix 3.2.x が正常にインストールされた状態を想定して書かれています。</div>
+</div>
+</div>
+<p><strong>1. Welcome to Zabbix</strong></p>
+<dl class="docutils">
+<dt>「Next step」をクリックします。</dt>
+<dd><a class="first last reference internal image-reference" href="_images/welcome.PNG"><img alt="_images/welcome.PNG" src="_images/welcome.PNG" style="width: 1124.0px; height: 809.0px;" /></a>
+</dd>
+</dl>
+<p><strong>2. Check of pre-requisites</strong></p>
+<dl class="docutils">
+<dt>全ての項目がOKになっていることを確認し、「Next step」をクリックします。</dt>
+<dd><a class="first last reference internal image-reference" href="_images/setup1.PNG"><img alt="_images/setup1.PNG" src="_images/setup1.PNG" style="width: 1210.0px; height: 893.0px;" /></a>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">php.ini ファイルのtimezone設定がされていない場合、ここでエラーが表示されます。</div>
+<div class="line">timezoneにAsia/Tokyoを設定し、zabbix-serverプロセスを再起動してリトライしてください。</div>
+</div>
+</div>
+<p><strong>3. Configure DB connection</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">User を zabbix に修正し、DBに設定したzabbixユーザのパスワードを入力します。</div>
+<div class="line">「Next step」をクリックします。</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup2.PNG"><img alt="_images/setup2.PNG" src="_images/setup2.PNG" style="width: 1210.0px; height: 893.0px;" /></a>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">Datebase name 以下3項目は、zabbix_server.confにて修正した3行に対応しています。</div>
+</div>
+</div>
+<p><strong>4. Zabbix server details</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Name 欄に、今回Zabbixサーバーとして使用するサーバのIPアドレスを入力し、</div>
+<div class="line">「Next step」をクリックします。</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup3.PNG"><img alt="_images/setup3.PNG" src="_images/setup3.PNG" style="width: 1124.0px; height: 809.0px;" /></a>
+</div></blockquote>
+<p><strong>5. Pre-installation summary</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">すべての項目に間違いがないか確認し、「Next step」をクリックします。</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup4.PNG"><img alt="_images/setup4.PNG" src="_images/setup4.PNG" style="width: 1210.0px; height: 893.0px;" /></a>
+</div></blockquote>
+<p><strong>6. Install</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">以下画面が表示されたら、「Finish」をクリックします。</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup5.PNG"><img alt="_images/setup5.PNG" src="_images/setup5.PNG" style="width: 1210.0px; height: 893.0px;" /></a>
+</div></blockquote>
+<p><strong>7. ログイン</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">ダッシュボードへのログイン画面が表示されます。</div>
+<div class="line">Zabbixサーバにデフォルトで登録されている下記特権管理者ユーザでログインします。</div>
+<div class="line">Username: admin</div>
+<div class="line">Password: zabbix</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup6.PNG"><img alt="_images/setup6.PNG" src="_images/setup6.PNG" style="width: 1210.0px; height: 893.0px;" /></a>
+</div></blockquote>
+<p><strong>8. ダッシュボード</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">ダッシュボードが表示されます。</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup7.PNG"><img alt="_images/setup7.PNG" src="_images/setup7.PNG" style="width: 1210.0px; height: 893.0px;" /></a>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">「Zabbix server is running」が「Yes」担っていない場合、サーバーとして正常稼働できていません。</div>
+<div class="line">以下の点を確認しましょう。</div>
+<div class="line">- zabbix_server.confの内容</div>
+<div class="line">- zabbix-serverプロセスの再起動</div>
+<div class="line">- mysqldプロセスの再起動</div>
+<div class="line">- mysqlのzabbixユーザ権限設定</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Web管理画面 デザイン変更<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="line-block">
+<div class="line">管理画面は表示言語と背景色を変更する事が可能です。</div>
+<div class="line">変更するためには、まずダッシュボード画面から右上のUser profileアイコンをクリックします。</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup8.PNG"><img alt="_images/setup8.PNG" src="_images/setup8.PNG" style="width: 1210.0px; height: 893.0px;" /></a>
+<div class="line-block">
+<div class="line">LanguageのプルダウンからJapanese(jp_JP)を選択します。</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup9.PNG"><img alt="_images/setup9.PNG" src="_images/setup9.PNG" style="width: 1091.0px; height: 773.0px;" /></a>
+<div class="line-block">
+<div class="line">ThemeのプルダウンからDarkを選択し、Updateをクリックします。</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup10.PNG"><img alt="_images/setup10.PNG" src="_images/setup10.PNG" style="width: 1098.0px; height: 564.0px;" /></a>
+<div class="line-block">
+<div class="line">管理画面の表示言語が日本語となり、背景色が黒く変更されます。</div>
+</div>
+<a class="reference internal image-reference" href="_images/setup10.PNG"><img alt="_images/setup10.PNG" src="_images/setup10.PNG" style="width: 1098.0px; height: 564.0px;" /></a>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">nyproject</a></h1>
+
+
+
+
+
+
+
+
+<h3>ナビゲーション</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="CentOS7_Install.html">CentOS 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debian9_Install.html">Debian 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WindowsServer_Install.html">WindowsServerインストール</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Zabbix_Install.html">Zabbix</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Zabbix Web管理画面 初期設定</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#web">Web管理画面 設定手順</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Web管理画面 デザイン変更</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="MariaDB_Install.html">MariaDB</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CentOS7_Install.html">CentOS 7</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Debian9_Install.html">Debian 9</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="WindowsServer_Install.html">WindowsServerインストール</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Zabbix_Install.html">Zabbix</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Zabbix Web管理画面 初期設定</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">はじめに</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#web">Web管理画面 設定手順</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Web管理画面 デザイン変更</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="MariaDB_Install.html">MariaDB</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Zabbix_Install.html" title="前の章へ">Zabbix</a></li>
+      <li>Next: <a href="MariaDB_Install.html" title="次の章へ">MariaDB</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="検索" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, nyproject.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/Zbx_GUI_Setup.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

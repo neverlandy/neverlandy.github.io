@@ -1,0 +1,178 @@
+=========================
+Zabbix
+=========================
+
+はじめに
+==========
+本ドキュメントは、統合監視ソフトウェアZabbixサーバ・エージェント および
+Zabbixを利用するために必要なミドルウェアのインストールと初期設定に関する内容を記述しています。
+SELinux および firewalld は停止状態であることを想定しています。
+
+Zabbixサーバ 構築手順
+==============================
+.. note::
+
+ | 本手順はCentOS7.xを想定して書かれています。
+ | 特段の記載がない場合を除き、rootユーザーで作業することを想定しています。
+
+**1. mariadbを削除**
+
+ ``# yum list installed | grep maria``
+ ``# yum remove mariadb-libs.x86_64``
+ ``# rm -rf /var/lib/mysql/``
+
+**2. MySQLのレポジトリを登録**
+
+ ``# cd /usr/local/src/``
+ ``# wget http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm``
+ ``# yum localinstall mysql57-community-release-el7-11.noarch.rpm``
+
+**3. MySQLをインストール**
+
+ ``# yum install mysql-community-server``
+
+**4. mysqldの起動設定**
+
+ ``# systemctl start mysqld.service``
+
+ ``# systemctl enable mysqld.service``
+
+**5. Zabbixのレポジトリを登録**
+
+ ``# rpm -ivh http://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm``
+
+**6. ZabbixServerとZabbixAgentをインストール**
+
+ ``# yum install -y zabbix-server-mysql zabbix-agent zabbix-get zabbix-sender zabbix-web-mysql zabbix-web-japanese``
+
+
+**7. httpdをインストール(インストールされていない場合)**
+
+ ``# yum install -y httpd``
+
+ ``# systemctl start httpd``
+
+ ``# systemctl enable httpd``
+
+
+Zabbixサーバ 初期設定
+========================
+
+**1. MySQLの初期パスワードを確認**
+
+ ``# cat /var/log/mysqld.log | grep root``
+
+**2. MySQLのパスワード設定**
+
+ ``# mysql_secure_installation``
+
+.. note::
+
+ | mysql_secure_installation で行っている設定内容
+ | - rootパスワード変更
+ | - 匿名ユーザーの削除
+ | - リモートホストからrootログイン禁止
+ | - テスト用データベース削除
+ | - ユーザー権限が保存されているテーブルをリロード
+
+**3. 文字コード設定**
+
+ ``# vi /etc/my.cnf``
+
+下記を追記::
+
+ [client]
+ default-character-set = utf8
+
+ [mysqld]
+
+ init-connect='SET NAMES utf8'
+ skip-character-set-client-handshake
+ character-set-server = utf8
+ collation-server = utf8_general_ci
+
+ [mysql]
+ default-character-set = utf8
+
+
+**4. MySQLにZabbixユーザを設定**
+
+ ``# mysql -uroot -p``
+ ``mysql> create database zabbix;``
+ ``mysql> grant all privileges on zabbix.* to zabbix@localhost identified by ‘[zabbixユーザのパスワード]’ ;``
+ ``mysql> quit``
+
+**5. DB内にZabbix初期データを作成**
+
+ ``# zcat /usr/share/doc/zabbix-server-mysql-3.2.7/create.sql.gz | mysql -uroot zabbix -p``
+
+
+**6. timezoneの修正**
+
+ ``# vi /etc/php.ini``::
+
+ | ;date.timezone =
+ | date.timezone = Asia/Tokyo ←この行を追記
+
+**7. Zabbixサーバの設定**
+
+ ``# vi /etc/zabbix/zabbix_server.conf``
+
+下記に変更::
+
+ ``DBPassword=[zabbixユーザのDBパスワード]``
+
+**7. Zabbixサーバの起動**
+
+ ``# systemctl start zabbix-server``
+ ``# systemctl enable zabbix-server``
+
+**8. Zabbixエージェントの設定**
+
+ ``# vi /etc/zabbix/zabbix_agent.conf``::
+
+ | 下記に変更::
+
+ Server=[ZabbixサーバのIPアドレス]
+ 
+ ServerActice=[ZabbixサーバのIPアドレス]
+ 
+ Hostname=[監視対象のホスト名]
+
+**9. Zabbix管理画面へアクセス**
+
+ ``http://ZabbixサーバのIPアドレス/zabbix``
+
+以下のブラウザ管理画面が表示されたらok
+
+.. image:: .\_image\welcome.png
+   :scale: 100% 
+
+
+Zabbixエージェント 構築&設定手順
+=================================
+
+**1. Zabbixのレポジトリを登録**
+
+ ``# rpm -ivh http://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm``
+
+**2. ZabbixAgentをインストール**
+
+ ``# yum install -y zabbix-agent``
+
+**3. zabbix_agent.confの設定**
+
+ ``# vi /etc/zabbix/zabbix_agent.conf``::
+
+ | 下記に変更::
+
+ Server=[ZabbixサーバのIPアドレス]
+ 
+ ServerActice=[ZabbixサーバのIPアドレス]
+ 
+ Hostname=[監視対象のホスト名]
+
+
+
+
+

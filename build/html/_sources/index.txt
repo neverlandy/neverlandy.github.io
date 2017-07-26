@@ -4,18 +4,8 @@
    contain the root `toctree` directive.
 
 ====================================
-GAT Knowledge Base
+GAT Texh Doc
 ====================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-   CentOS7_Install
-   Debian9_Install
-   WindowsServer_Install
-   MariaDB_Install
-
 
 Linux[CentOS7]
 ==================================
@@ -42,6 +32,24 @@ WindowsServer[WindowsServer2016]
    :maxdepth: 2
 
    WindowsServer_Install
+
+
+Zabbix
+==================================
+
+.. toctree::
+   :maxdepth: 2
+
+   Zabbix_Install
+
+
+Zabbix[GUI]
+==================================
+
+.. toctree::
+   :maxdepth: 2
+
+   Zbx_GUI_Setup
 
 
 MariaDB
