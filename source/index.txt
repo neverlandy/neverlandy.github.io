@@ -3,15 +3,55 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to text's documentation!
-================================
+====================================
+GAT Knowledge Base
+====================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
    CentOS7_Install
+   Debian9_Install
+   WindowsServer_Install
    MariaDB_Install
+
+
+Linux[CentOS7]
+==================================
+
+.. toctree::
+   :maxdepth: 2
+
+   CentOS7_Install
+
+
+Linux[Debian9]
+==================================
+
+.. toctree::
+   :maxdepth: 2
+
+   Debian9_Install
+
+
+WindowsServer[WindowsServer2016]
+==================================
+
+.. toctree::
+   :maxdepth: 2
+
+   WindowsServer_Install
+
+
+MariaDB
+==================================
+
+.. toctree::
+   :maxdepth: 2
+
+   MariaDB_Install
+
 
 Indices and tables
 ==================

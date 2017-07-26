@@ -1,0 +1,99 @@
+=========================
+Debian 9
+=========================
+
+はじめに
+==========
+本ドキュメントはDebian 9 を仮想マシン（以下、VM）として稼働する際の
+インストール手順、インストール後の初期設定に関する内容を記述します。
+
+
+インストール手順
+==================
+.. note::
+
+ | 本手順はDebian 9.xを想定して書かれています。
+ | 特段の記載がない場合を除き、rootユーザーで作業することを想定しています。
+
+1. ハードウェア要件（参考）
+----------------------------
+
+.. list-table:: ハードウェア要件
+   :widths: 10 15
+   :header-rows: 1
+
+   * - 項目
+     - 設定値
+   * - CPU
+     - 64bit対応CPU
+   * - 最大CPU数
+     - 160
+   * - 最小メモリ
+     - 1GB
+   * - 最大メモリ
+     - 3TB
+   * - 最小ストレージ容量
+     - 7.5GB ※最小インストールした場合
+   * - 最大ストレージ容量
+     - 500TB ※xfsファイルシステム使用の場合
+
+
+2. ISOイメージファイルのダウンロード
+-------------------------------------
+
+
+ **１. Debianの公式ページへアクセスし、[CD/USB ISOイメージ] をクリックする。**
+ https://www.debian.org/
+
+ .. image:: .\_image\Debianインストール1.PNG
+
+
+ **２. DebianのCDページにて「HTTPを使って CD/DVD イメージをダウンロードする。」をクリックする。**
+
+ .. image:: .\_image\Debianインストール2.PNG
+
+
+ **３.ダウンロード先を指定して[保存]する。**
+
+
+ .. image:: .\_image\Debianインストール3.PNG
+
+ .. image:: .\_image\Debianインストール4.PNG
+ .. image:: .\_image\Debianインストール5.PNG
+ .. image:: .\_image\Debianインストール6.PNG
+ .. image:: .\_image\Debianインストール7.PNG
+ .. image:: .\_image\Debianインストール8.PNG
+ .. image:: .\_image\Debianインストール9.PNG
+ .. image:: .\_image\Debianインストール10.PNG
+
+ .. image:: .\_image\Debianインストール21.PNG
+ .. image:: .\_image\Debianインストール22.PNG
+ .. image:: .\_image\Debianインストール23.PNG
+ .. image:: .\_image\Debianインストール24.PNG
+ .. image:: .\_image\Debianインストール25.PNG
+ .. image:: .\_image\Debianインストール26.PNG
+ .. image:: .\_image\Debianインストール27.PNG
+ .. image:: .\_image\Debianインストール28.PNG
+ .. image:: .\_image\Debianインストール29.PNG
+ .. image:: .\_image\Debianインストール30.PNG
+ .. image:: .\_image\Debianインストール31.PNG
+ .. image:: .\_image\Debianインストール32.PNG
+ .. image:: .\_image\Debianインストール33.PNG
+ .. image:: .\_image\Debianインストール34.PNG
+ .. image:: .\_image\Debianインストール35.PNG
+ .. image:: .\_image\Debianインストール36.PNG
+ .. image:: .\_image\Debianインストール37.PNG
+ .. image:: .\_image\Debianインストール38.PNG
+ .. image:: .\_image\Debianインストール39.PNG
+ .. image:: .\_image\Debianインストール40.PNG
+ .. image:: .\_image\Debianインストール41.PNG
+ .. image:: .\_image\Debianインストール42.PNG
+ .. image:: .\_image\Debianインストール43.PNG
+ .. image:: .\_image\Debianインストール44.PNG
+ .. image:: .\_image\Debianインストール45.PNG
+ .. image:: .\_image\Debianインストール46.PNG
+ .. image:: .\_image\Debianインストール47.PNG
+ .. image:: .\_image\Debianインストール48.PNG
+ .. image:: .\_image\Debianインストール49.PNG
+ .. image:: .\_image\Debianインストール50.PNG
+

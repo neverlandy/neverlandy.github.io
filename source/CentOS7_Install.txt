@@ -44,7 +44,7 @@ CentOS 7
 
  | ① CentOSのダウンロードページへアクセスし、[DVD ISO] をクリックする。
 
- .. image:: ..\image\CentOS7_1.PNG
+ .. image:: .\_image\CentOS7_1.PNG
 
 
  **② CentOSのダウンロードページからインストールディスクイメージをダウンロードする。**
@@ -52,12 +52,12 @@ CentOS 7
  **http://ftp.riken.jp/Linux/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1611.iso**
 
 
- .. image:: ..\image\CentOS7_2.PNG
+ .. image:: .\_image\CentOS7_2.PNG
 
 
  **③ ダウンロード先を指定して[保存]する。**
 
 
- .. image:: ..\image\CentOS7_3.PNG
+ .. image:: .\_image\CentOS7_3.PNG
 
 
