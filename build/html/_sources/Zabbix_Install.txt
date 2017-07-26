@@ -145,7 +145,7 @@ Zabbixサーバ 初期設定
 
 以下のブラウザ管理画面が表示されたらok
 
-.. image:: .\_image\welcome.png
+.. image:: ./_image/welcome.png
    :scale: 100% 
 
 
