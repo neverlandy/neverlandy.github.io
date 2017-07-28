@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
-    <link rel="next" title="MariaDB" href="MariaDB_Install.html" />
+    <link rel="next" title="Zabbix" href="Zabbix_Install.html" />
     <link rel="prev" title="Debian 9" href="Debian9_Install.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -52,108 +52,96 @@
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
 <div class="last line-block">
-<div class="line">本手順はWindowsServer 2016を想定して書かれています。</div>
+<div class="line">・本手順はWindows Server 2016を想定して書かれています。</div>
+<div class="line-block">
 <div class="line">特段の記載がない場合を除き、管理者ユーザーで操作することを想定しています。</div>
 </div>
-</div>
-<p><strong>1. リポジトリにepelを追加</strong></p>
-<blockquote>
-<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">epel-release</span></code></div></blockquote>
-<p><strong>2. MariaDBのインストール</strong></p>
-<blockquote>
-<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">mariadb</span> <span class="pre">mariadb-devel</span> <span class="pre">mariadb-server</span></code></div></blockquote>
-<p><strong>3. バージョンの確認</strong></p>
-<blockquote>
-<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">mysql</span> <span class="pre">-V</span></code></div></blockquote>
-<div class="admonition hint">
-<p class="first admonition-title">ヒント</p>
-<div class="last line-block">
-<div class="line">バージョン確認時の結果表示（例</div>
-<div class="line">[<a class="reference external" href="mailto:root&#37;&#52;&#48;localhost">root<span>&#64;</span>localhost</a> ~]# mysql -V</div>
-<div class="line">mysql  Ver 15.1 Distrib 5.5.52-MariaDB, for Linux (x86_64) using readline 5.1</div>
+<div class="line">・VMwareやVirtualBoxといった仮想環境上への構築を前提としています。</div>
 </div>
 </div>
+<p><strong>0. 評価版のダウンロード</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="line-block">
+<div class="line">評価版ソフトウェアを利用して解説するが手順は通常版(製品版)と変わりない。</div>
+</div>
+<div class="line-block">
+<div class="line">評価版ソフトウェアを以下URLリンク先からダウンロードする。</div>
+<div class="line">※ユーザー登録の必要がある。</div>
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="https://www.microsoft.com/ja-jp/evalcenter/evaluate-windows-server-2016">https://www.microsoft.com/ja-jp/evalcenter/evaluate-windows-server-2016</a></div>
+<div class="line"><br /></div>
+<div class="line">ISO を選択してダウンロードを開始する。</div>
+</div>
+<img alt="_images/WS2016_1.PNG" src="_images/WS2016_1.PNG" />
+<img alt="_images/WS2016_2.PNG" src="_images/WS2016_2.PNG" />
+<img alt="_images/WS2016_3.PNG" src="_images/WS2016_3.PNG" />
+<img alt="_images/WS2016_4.PNG" class="last" src="_images/WS2016_4.PNG" />
+</div>
+<p><strong>1. OSインストール</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">ダウンロードしたISO を仮想マシン へマウントしてインストールを開始する。</div>
+<div class="line">Windowsのインストールダイアログが表示されるため、設定項目を選択。</div>
+</div>
+<div class="line-block">
+<div class="line">インストールする言語</div>
+<div class="line">日付と通貨の形式</div>
+<div class="line">キーボードまたは入力方式</div>
+<div class="line">キーボードの種類</div>
+</div>
+<div class="line-block">
+<div class="line">選択完了後、[次へ]ボタンをクリックする。</div>
+</div>
+<img alt="_images/WS2016_5.PNG" src="_images/WS2016_5.PNG" />
+<p>次画面にて、[今すぐインストール]リンクをクリック。</p>
+<img alt="_images/WS2016_6.PNG" src="_images/WS2016_6.PNG" />
+</div></blockquote>
+<p>インストールするオペレーティングシステムの選択画面が表示されるので、
+インストールを行うWindowsのエディションを選択する。</p>
+<blockquote>
+<div><img alt="_images/WS2016_7.PNG" src="_images/WS2016_7.PNG" />
+</div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
 <div class="last line-block">
-<div class="line">利用可能リポジトリ確認</div>
-<div class="line">[<a class="reference external" href="mailto:root&#37;&#52;&#48;localhost">root<span>&#64;</span>localhost</a> ~]# yum repolist enabled</div>
-<div class="line">読み込んだプラグイン:fastestmirror</div>
-<div class="line">Loading mirror speeds from cached hostfile</div>
-<div class="line-block">
-<div class="line">* base: ftp.iij.ad.jp</div>
-<div class="line">* epel: ftp.jaist.ac.jp</div>
-<div class="line">* extras: ftp.iij.ad.jp</div>
-<div class="line">* updates: ftp.iij.ad.jp</div>
-</div>
-<div class="line">リポジトリー ID       リポジトリー名                                      状態</div>
-<div class="line">base/7/x86_64         CentOS-7 - Base                                      9,363</div>
-<div class="line">epel/x86_64           Extra Packages for Enterprise Linux 7 - x86_64      11,919</div>
-<div class="line">extras/7/x86_64       CentOS-7 - Extras                                      449</div>
-<div class="line">updates/7/x86_64      CentOS-7 - Updates                                   2,100</div>
-<div class="line">repolist: 23,831</div>
+<div class="line">Windows Server 2016 Standard Evaluation・・・スタンダード版のサーバコア</div>
+<div class="line">Windows Server 2016 Standard Evaluation (デスクトップ エクスペリエンス)・・・スタンダード版のGUI版(通常版)</div>
+<div class="line">Windows Server 2016 Standard Datacenter Evaluation・・・データセンター版のサーバコア</div>
+<div class="line">Windows Server 2016 Standard Datacenter Evaluation (デスクトップ エクスペリエンス)・・・データセンター版のGUI版(通常版)</div>
 </div>
 </div>
+<p>ソフトウェアライセンス条項が表示される。
+内容を確認し[同意します]にチェックをつけ、[次へ]ボタンをクリック。</p>
+<blockquote>
+<div><img alt="_images/WS2016_8.PNG" src="_images/WS2016_8.PNG" />
+</div></blockquote>
+<p>インストールの種類を選択する。
+今回は新規構築のため[カスタム]を選択。</p>
+<blockquote>
+<div><img alt="_images/WS2016_9.PNG" src="_images/WS2016_9.PNG" />
+</div></blockquote>
+<p>インストールするハードディスクの選択をする。
+今回は[ドライブ 0 の割り当てられない領域]を選択し、[次へ]ボタンをクリック。
+※パーティションが分割されている場合もあるため注意すること。</p>
+<blockquote>
+<div><img alt="_images/WS2016_10.PNG" src="_images/WS2016_10.PNG" />
+</div></blockquote>
+<p>OSのインストールが開始される。
+インストールが終了とインストーラーはPCの再起動（数回）する。
+再起動後、インストールの最終処理を実行し初期設定を行う。</p>
+<blockquote>
+<div><img alt="_images/WS2016_11.PNG" src="_images/WS2016_11.PNG" />
+</div></blockquote>
 </div>
 <div class="section" id="id3">
-<h2>文字コードの変更<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>初期設定<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>インストール完了後、初回ログイン前にAdministratorのパスワード設定を要求されるため、
+パスワード入力画面にて、Administratorのパスワードを入力し設定する。</p>
 <blockquote>
-<div><blockquote>
-<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">vi</span> <span class="pre">/etc/my.cnf</span></code></div></blockquote>
-<div class="line-block">
-<div class="line">[mysqld]</div>
-<div class="line">datadir=/var/lib/mysql</div>
-<div class="line">socket=/var/lib/mysql/mysql.sock</div>
-<div class="line"># Disabling symbolic-links is recommended to prevent assorted security risks</div>
-<div class="line">symbolic-links=0</div>
-<div class="line"># Settings user and group are ignored when systemd is used.</div>
-<div class="line"># If you need to run mysqld under a different user or group,</div>
-<div class="line"># customize your systemd unit file for mariadb according to the</div>
-<div class="line"># instructions in <a class="reference external" href="http://fedoraproject.org/wiki/Systemd">http://fedoraproject.org/wiki/Systemd</a></div>
-<div class="line">character-set-server=utf8</div>
-<div class="line"><br /></div>
-<div class="line">[mysqld_safe]</div>
-<div class="line">log-error=/var/log/mariadb/mariadb.log</div>
-<div class="line">pid-file=/var/run/mariadb/mariadb.pid</div>
-<div class="line"><br /></div>
-<div class="line">#</div>
-<div class="line"># include all files from the config directory</div>
-<div class="line">#</div>
-<div class="line">!includedir /etc/my.cnf.d</div>
-</div>
+<div><img alt="_images/WS2016_12.PNG" src="_images/WS2016_12.PNG" />
 </div></blockquote>
-</div>
-<div class="section" id="mariadb">
-<h2>MariaDB サービス起動<a class="headerlink" href="#mariadb" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<blockquote>
-<div><div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">#</span> <span class="pre">systemctl</span> <span class="pre">is-enable</span> <span class="pre">mariadb.service</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">#</span> <span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">mariadb.service</span></code></div>
-<div class="line"><code class="docutils literal"><span class="pre">#</span> <span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">mariadb.service</span></code></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="db">
-<h2>DB初期設定<a class="headerlink" href="#db" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<blockquote>
-<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">mysql_secure_installation</span></code></div></blockquote>
-</div>
-<div class="section" id="id4">
-<h2>初期データベースの作成<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<blockquote>
-<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">create</span> <span class="pre">database</span> <span class="pre">dbtest</span></code></div></blockquote>
-</div>
-<div class="section" id="id5">
-<h2>データベースユーザーの追加<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<blockquote>
-<div><div class="line-block">
-<div class="line"><code class="docutils literal"><span class="pre">#</span> <span class="pre">mysql</span> <span class="pre">-u</span> <span class="pre">root</span> <span class="pre">-p</span></code></div>
-<div class="line">[パスワード]を入力</div>
-<div class="line"><br /></div>
-<div class="line"># 作成したデータベース：dbtestに全ての権限を持ったユーザー <a class="reference external" href="mailto:dbuser&#37;&#52;&#48;localhost">dbuser<span>&#64;</span>localhost</a> を登録する</div>
-<div class="line"><code class="docutils literal"><span class="pre">grant</span> <span class="pre">all</span> <span class="pre">on</span> <span class="pre">dbtest.*</span> <span class="pre">to</span> <span class="pre">dbuser&#64;localhost</span> <span class="pre">identified</span> <span class="pre">by</span> <span class="pre">'password';</span></code></div>
-</div>
-</div></blockquote>
+<p>以上でインストールは完了。</p>
 </div>
 </div>
 
@@ -173,22 +161,6 @@
 
 
 <h3>ナビゲーション</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="CentOS7_Install.html">CentOS 7</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Debian9_Install.html">Debian 9</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">WindowsServerインストール</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">はじめに</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">インストール手順</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">文字コードの変更</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mariadb">MariaDB サービス起動</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#db">DB初期設定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">初期データベースの作成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">データベースユーザーの追加</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="MariaDB_Install.html">MariaDB</a></li>
-</ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="CentOS7_Install.html">CentOS 7</a></li>
 </ul>
@@ -199,13 +171,15 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">WindowsServerインストール</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">はじめに</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">インストール手順</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">文字コードの変更</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mariadb">MariaDB サービス起動</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#db">DB初期設定</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">初期データベースの作成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">データベースユーザーの追加</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">初期設定</a></li>
 </ul>
 </li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Zabbix_Install.html">Zabbix</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Zbx_GUI_Setup.html">Zabbix Web管理画面 初期設定</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="MariaDB_Install.html">MariaDB</a></li>
@@ -216,7 +190,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="Debian9_Install.html" title="前の章へ">Debian 9</a></li>
-      <li>Next: <a href="MariaDB_Install.html" title="次の章へ">MariaDB</a></li>
+      <li>Next: <a href="Zabbix_Install.html" title="次の章へ">Zabbix</a></li>
   </ul></li>
 </ul>
 </div>
