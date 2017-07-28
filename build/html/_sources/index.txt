@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 ====================================
-GAT Texh Doc
+GAT Tech Doc
 ====================================
 
 Linux[CentOS7]

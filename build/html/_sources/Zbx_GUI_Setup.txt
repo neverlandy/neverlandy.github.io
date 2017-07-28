@@ -16,13 +16,13 @@ Web管理画面 設定手順
 
 「Next step」をクリックします。
  .. image:: ./_image/welcome.PNG
-   :scale: 100% 
+
 
 **2. Check of pre-requisites**
 
 全ての項目がOKになっていることを確認し、「Next step」をクリックします。
  .. image:: ./_image/setup1.PNG
-   :scale: 100% 
+
 
 .. note::
 
@@ -35,7 +35,7 @@ Web管理画面 設定手順
  | 「Next step」をクリックします。
 
  .. image:: ./_image/setup2.PNG
-   :scale: 100% 
+
 
 .. note::
 
@@ -48,21 +48,21 @@ Web管理画面 設定手順
  | 「Next step」をクリックします。
 
  .. image:: ./_image/setup3.PNG
-   :scale: 100% 
+
 
 **5. Pre-installation summary**
 
  | すべての項目に間違いがないか確認し、「Next step」をクリックします。
 
  .. image:: ./_image/setup4.PNG
-   :scale: 100% 
+
 
 **6. Install**
 
  | 以下画面が表示されたら、「Finish」をクリックします。
 
  .. image:: ./_image/setup5.PNG
-   :scale: 100% 
+
 
 **7. ログイン**
 
@@ -72,14 +72,14 @@ Web管理画面 設定手順
  | Password: zabbix
 
  .. image:: ./_image/setup6.PNG
-   :scale: 100% 
+
 
 **8. ダッシュボード**
 
  | ダッシュボードが表示されます。
 
  .. image:: ./_image/setup7.PNG
-   :scale: 100% 
+
 
 .. note::
 
@@ -98,25 +98,25 @@ Web管理画面 デザイン変更
  | 変更するためには、まずダッシュボード画面から右上のUser profileアイコンをクリックします。
 
  .. image:: ./_image/setup8.PNG
-   :scale: 100% 
+
 
 
  | LanguageのプルダウンからJapanese(jp_JP)を選択します。
 
  .. image:: ./_image/setup9.PNG
-   :scale: 100% 
+
 
 
  | ThemeのプルダウンからDarkを選択し、Updateをクリックします。
 
  .. image:: ./_image/setup10.PNG
-   :scale: 100% 
+
 
 
  | 管理画面の表示言語が日本語となり、背景色が黒く変更されます。
 
  .. image:: ./_image/setup10.PNG
-   :scale: 100% 
+
 
 
 

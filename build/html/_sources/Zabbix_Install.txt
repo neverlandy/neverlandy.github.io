@@ -145,8 +145,7 @@ Zabbixサーバ 初期設定
 
 以下のブラウザ管理画面が表示されたらok
 
-.. image:: ./_image/welcome.png
-   :scale: 100% 
+ .. image:: ./_image/welcome.PNG
 
 
 Zabbixエージェント 構築&設定手順
@@ -162,7 +161,7 @@ Zabbixエージェント 構築&設定手順
 
 **3. zabbix_agent.confの設定**
 
- ``# vi /etc/zabbix/zabbix_agent.conf``::
+ ``# vi /etc/zabbix/zabbix_agentd.conf``::
 
  | 下記に変更::
 
