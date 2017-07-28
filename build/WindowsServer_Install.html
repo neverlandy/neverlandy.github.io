@@ -1,0 +1,224 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>WindowsServerインストール &#8212; manual 0.1 ドキュメント</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="Zabbix" href="Zabbix_Install.html" />
+    <link rel="prev" title="Debian 9" href="Debian9_Install.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Zabbix_Install.html" title="Zabbix"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="Debian9_Install.html" title="Debian 9"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">manual 0.1 ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">WindowsServerインストール</a><ul>
+<li><a class="reference internal" href="#id1">はじめに</a></li>
+<li><a class="reference internal" href="#id2">インストール手順</a></li>
+<li><a class="reference internal" href="#id3">初期設定</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Debian9_Install.html"
+                        title="前の章へ">Debian 9</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="Zabbix_Install.html"
+                        title="次の章へ">Zabbix</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/WindowsServer_Install.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="検索" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="windowsserver">
+<h1>WindowsServerインストール<a class="headerlink" href="#windowsserver" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>本ドキュメントはWindowsServerのインストール、初期設定に関する内容を記述します。</p>
+</div>
+<div class="section" id="id2">
+<h2>インストール手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">・本手順はWindows Server 2016を想定して書かれています。</div>
+<div class="line-block">
+<div class="line">特段の記載がない場合を除き、管理者ユーザーで操作することを想定しています。</div>
+</div>
+<div class="line">・VMwareやVirtualBoxといった仮想環境上への構築を前提としています。</div>
+</div>
+</div>
+<p><strong>0. 評価版のダウンロード</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="line-block">
+<div class="line">評価版ソフトウェアを利用して解説するが手順は通常版(製品版)と変わりない。</div>
+</div>
+<div class="line-block">
+<div class="line">評価版ソフトウェアを以下URLリンク先からダウンロードする。</div>
+<div class="line">※ユーザー登録の必要がある。</div>
+<div class="line"><br /></div>
+<div class="line"><a class="reference external" href="https://www.microsoft.com/ja-jp/evalcenter/evaluate-windows-server-2016">https://www.microsoft.com/ja-jp/evalcenter/evaluate-windows-server-2016</a></div>
+<div class="line"><br /></div>
+<div class="line">ISO を選択してダウンロードを開始する。</div>
+</div>
+<img alt="_images/WS2016_1.PNG" src="_images/WS2016_1.PNG" />
+<img alt="_images/WS2016_2.PNG" src="_images/WS2016_2.PNG" />
+<img alt="_images/WS2016_3.PNG" src="_images/WS2016_3.PNG" />
+<img alt="_images/WS2016_4.PNG" class="last" src="_images/WS2016_4.PNG" />
+</div>
+<p><strong>1. OSインストール</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">ダウンロードしたISO を仮想マシン へマウントしてインストールを開始する。</div>
+<div class="line">Windowsのインストールダイアログが表示されるため、設定項目を選択。</div>
+</div>
+<div class="line-block">
+<div class="line">インストールする言語</div>
+<div class="line">日付と通貨の形式</div>
+<div class="line">キーボードまたは入力方式</div>
+<div class="line">キーボードの種類</div>
+</div>
+<div class="line-block">
+<div class="line">選択完了後、[次へ]ボタンをクリックする。</div>
+</div>
+<img alt="_images/WS2016_5.PNG" src="_images/WS2016_5.PNG" />
+<p>次画面にて、[今すぐインストール]リンクをクリック。</p>
+<img alt="_images/WS2016_6.PNG" src="_images/WS2016_6.PNG" />
+</div></blockquote>
+<p>インストールするオペレーティングシステムの選択画面が表示されるので、
+インストールを行うWindowsのエディションを選択する。</p>
+<blockquote>
+<div><img alt="_images/WS2016_7.PNG" src="_images/WS2016_7.PNG" />
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">Windows Server 2016 Standard Evaluation・・・スタンダード版のサーバコア</div>
+<div class="line">Windows Server 2016 Standard Evaluation (デスクトップ エクスペリエンス)・・・スタンダード版のGUI版(通常版)</div>
+<div class="line">Windows Server 2016 Standard Datacenter Evaluation・・・データセンター版のサーバコア</div>
+<div class="line">Windows Server 2016 Standard Datacenter Evaluation (デスクトップ エクスペリエンス)・・・データセンター版のGUI版(通常版)</div>
+</div>
+</div>
+<p>ソフトウェアライセンス条項が表示される。
+内容を確認し[同意します]にチェックをつけ、[次へ]ボタンをクリック。</p>
+<blockquote>
+<div><img alt="_images/WS2016_8.PNG" src="_images/WS2016_8.PNG" />
+</div></blockquote>
+<p>インストールの種類を選択する。
+今回は新規構築のため[カスタム]を選択。</p>
+<blockquote>
+<div><img alt="_images/WS2016_9.PNG" src="_images/WS2016_9.PNG" />
+</div></blockquote>
+<p>インストールするハードディスクの選択をする。
+今回は[ドライブ 0 の割り当てられない領域]を選択し、[次へ]ボタンをクリック。
+※パーティションが分割されている場合もあるため注意すること。</p>
+<blockquote>
+<div><img alt="_images/WS2016_10.PNG" src="_images/WS2016_10.PNG" />
+</div></blockquote>
+<p>OSのインストールが開始される。
+インストールが終了とインストーラーはPCの再起動（数回）する。
+再起動後、インストールの最終処理を実行し初期設定を行う。</p>
+<blockquote>
+<div><img alt="_images/WS2016_11.PNG" src="_images/WS2016_11.PNG" />
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h2>初期設定<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>インストール完了後、初回ログイン前にAdministratorのパスワード設定を要求されるため、
+パスワード入力画面にて、Administratorのパスワードを入力し設定する。</p>
+<blockquote>
+<div><img alt="_images/WS2016_12.PNG" src="_images/WS2016_12.PNG" />
+</div></blockquote>
+<p>以上でインストールは完了。</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Zabbix_Install.html" title="Zabbix"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="Debian9_Install.html" title="Debian 9"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">manual 0.1 ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, nyproject.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3 で生成しました。
+    </div>
+  </body>
+</html>

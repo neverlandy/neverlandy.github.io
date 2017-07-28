@@ -1,0 +1,235 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MariaDB &#8212; manual 0.1 ドキュメント</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="prev" title="Zabbix Web管理画面 初期設定" href="Zbx_GUI_Setup.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="Zbx_GUI_Setup.html" title="Zabbix Web管理画面 初期設定"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">manual 0.1 ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">MariaDB</a><ul>
+<li><a class="reference internal" href="#id1">はじめに</a></li>
+<li><a class="reference internal" href="#id2">インストール手順</a></li>
+<li><a class="reference internal" href="#id3">文字コードの変更</a></li>
+<li><a class="reference internal" href="#id4">MariaDB サービス起動</a></li>
+<li><a class="reference internal" href="#db">DB初期設定</a></li>
+<li><a class="reference internal" href="#id5">初期データベースの作成</a></li>
+<li><a class="reference internal" href="#id6">データベースユーザーの追加</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="Zbx_GUI_Setup.html"
+                        title="前の章へ">Zabbix Web管理画面 初期設定</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/MariaDB_Install.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="検索" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mariadb">
+<h1>MariaDB<a class="headerlink" href="#mariadb" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="line-block">
+<div class="line">本ドキュメントはCentOS7 よりMySQLに変わり標準データベースソフトウェアとなった</div>
+<div class="line">MariaDBのインストール、初期設定に関する内容を記述します。</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h2>インストール手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">本手順はCentOS7.xを想定して書かれています。</div>
+<div class="line">特段の記載がない場合を除き、rootユーザーで作業することを想定しています。</div>
+</div>
+</div>
+<p><strong>1. リポジトリにepelを追加</strong></p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">epel-release</span></code></div></blockquote>
+<p><strong>2. MariaDBのインストール</strong></p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">mariadb</span> <span class="pre">mariadb-devel</span> <span class="pre">mariadb-server</span></code></div></blockquote>
+<p><strong>3. バージョンの確認</strong></p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">mysql</span> <span class="pre">-V</span></code></div></blockquote>
+<div class="admonition hint">
+<p class="first admonition-title">ヒント</p>
+<div class="last line-block">
+<div class="line">バージョン確認時の結果表示（例</div>
+<div class="line">[<a class="reference external" href="mailto:root&#37;&#52;&#48;localhost">root<span>&#64;</span>localhost</a> ~]# mysql -V</div>
+<div class="line">mysql  Ver 15.1 Distrib 5.5.52-MariaDB, for Linux (x86_64) using readline 5.1</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">利用可能リポジトリ確認</div>
+<div class="line">[<a class="reference external" href="mailto:root&#37;&#52;&#48;localhost">root<span>&#64;</span>localhost</a> ~]# yum repolist enabled</div>
+<div class="line">読み込んだプラグイン:fastestmirror</div>
+<div class="line">Loading mirror speeds from cached hostfile</div>
+<div class="line-block">
+<div class="line">* base: ftp.iij.ad.jp</div>
+<div class="line">* epel: ftp.jaist.ac.jp</div>
+<div class="line">* extras: ftp.iij.ad.jp</div>
+<div class="line">* updates: ftp.iij.ad.jp</div>
+</div>
+<div class="line">リポジトリー ID       リポジトリー名                                      状態</div>
+<div class="line">base/7/x86_64         CentOS-7 - Base                                      9,363</div>
+<div class="line">epel/x86_64           Extra Packages for Enterprise Linux 7 - x86_64      11,919</div>
+<div class="line">extras/7/x86_64       CentOS-7 - Extras                                      449</div>
+<div class="line">updates/7/x86_64      CentOS-7 - Updates                                   2,100</div>
+<div class="line">repolist: 23,831</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>文字コードの変更<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><blockquote>
+<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">vi</span> <span class="pre">/etc/my.cnf</span></code></div></blockquote>
+<div class="line-block">
+<div class="line">[mysqld]</div>
+<div class="line">datadir=/var/lib/mysql</div>
+<div class="line">socket=/var/lib/mysql/mysql.sock</div>
+<div class="line"># Disabling symbolic-links is recommended to prevent assorted security risks</div>
+<div class="line">symbolic-links=0</div>
+<div class="line"># Settings user and group are ignored when systemd is used.</div>
+<div class="line"># If you need to run mysqld under a different user or group,</div>
+<div class="line"># customize your systemd unit file for mariadb according to the</div>
+<div class="line"># instructions in <a class="reference external" href="http://fedoraproject.org/wiki/Systemd">http://fedoraproject.org/wiki/Systemd</a></div>
+<div class="line">character-set-server=utf8</div>
+<div class="line"><br /></div>
+<div class="line">[mysqld_safe]</div>
+<div class="line">log-error=/var/log/mariadb/mariadb.log</div>
+<div class="line">pid-file=/var/run/mariadb/mariadb.pid</div>
+<div class="line"><br /></div>
+<div class="line">#</div>
+<div class="line"># include all files from the config directory</div>
+<div class="line">#</div>
+<div class="line">!includedir /etc/my.cnf.d</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h2>MariaDB サービス起動<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">#</span> <span class="pre">systemctl</span> <span class="pre">is-enable</span> <span class="pre">mariadb.service</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">#</span> <span class="pre">systemctl</span> <span class="pre">enable</span> <span class="pre">mariadb.service</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">#</span> <span class="pre">systemctl</span> <span class="pre">start</span> <span class="pre">mariadb.service</span></code></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="db">
+<h2>DB初期設定<a class="headerlink" href="#db" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">mysql_secure_installation</span></code></div></blockquote>
+</div>
+<div class="section" id="id5">
+<h2>初期データベースの作成<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">#</span> <span class="pre">create</span> <span class="pre">database</span> <span class="pre">dbtest</span></code></div></blockquote>
+</div>
+<div class="section" id="id6">
+<h2>データベースユーザーの追加<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">#</span> <span class="pre">mysql</span> <span class="pre">-u</span> <span class="pre">root</span> <span class="pre">-p</span></code></div>
+<div class="line">[パスワード]を入力</div>
+<div class="line"><br /></div>
+<div class="line"># 作成したデータベース：dbtestに全ての権限を持ったユーザー <a class="reference external" href="mailto:dbuser&#37;&#52;&#48;localhost">dbuser<span>&#64;</span>localhost</a> を登録する</div>
+<div class="line"><code class="docutils literal"><span class="pre">grant</span> <span class="pre">all</span> <span class="pre">on</span> <span class="pre">dbtest.*</span> <span class="pre">to</span> <span class="pre">dbuser&#64;localhost</span> <span class="pre">identified</span> <span class="pre">by</span> <span class="pre">'password';</span></code></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="Zbx_GUI_Setup.html" title="Zabbix Web管理画面 初期設定"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">manual 0.1 ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, nyproject.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3 で生成しました。
+    </div>
+  </body>
+</html>

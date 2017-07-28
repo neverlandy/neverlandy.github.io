@@ -1,0 +1,226 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Debian 9 &#8212; manual 0.1 ドキュメント</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="WindowsServerインストール" href="WindowsServer_Install.html" />
+    <link rel="prev" title="CentOS 7" href="CentOS7_Install.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="WindowsServer_Install.html" title="WindowsServerインストール"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="CentOS7_Install.html" title="CentOS 7"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">manual 0.1 ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Debian 9</a><ul>
+<li><a class="reference internal" href="#id1">はじめに</a></li>
+<li><a class="reference internal" href="#id2">インストール手順</a><ul>
+<li><a class="reference internal" href="#id3">1. ハードウェア要件（参考）</a></li>
+<li><a class="reference internal" href="#iso">2. ISOイメージファイルのダウンロード</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="CentOS7_Install.html"
+                        title="前の章へ">CentOS 7</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="WindowsServer_Install.html"
+                        title="次の章へ">WindowsServerインストール</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Debian9_Install.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="検索" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="debian-9">
+<h1>Debian 9<a class="headerlink" href="#debian-9" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>はじめに<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>本ドキュメントはDebian 9 を仮想マシン（以下、VM）として稼働する際の
+インストール手順、インストール後の初期設定に関する内容を記述します。</p>
+</div>
+<div class="section" id="id2">
+<h2>インストール手順<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">本手順はDebian 9.xを想定して書かれています。</div>
+<div class="line">特段の記載がない場合を除き、rootユーザーで作業することを想定しています。</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>1. ハードウェア要件（参考）<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<table border="1" class="colwidths-given docutils" id="id4">
+<caption><span class="caption-text">ハードウェア要件</span><a class="headerlink" href="#id4" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">項目</th>
+<th class="head">設定値</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CPU</td>
+<td>64bit対応CPU</td>
+</tr>
+<tr class="row-odd"><td>最大CPU数</td>
+<td>160</td>
+</tr>
+<tr class="row-even"><td>最小メモリ</td>
+<td>1GB</td>
+</tr>
+<tr class="row-odd"><td>最大メモリ</td>
+<td>3TB</td>
+</tr>
+<tr class="row-even"><td>最小ストレージ容量</td>
+<td>7.5GB ※最小インストールした場合</td>
+</tr>
+<tr class="row-odd"><td>最大ストレージ容量</td>
+<td>500TB ※xfsファイルシステム使用の場合</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="iso">
+<h3>2. ISOイメージファイルのダウンロード<a class="headerlink" href="#iso" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<blockquote>
+<div><p><strong>１. Debianの公式ページへアクセスし、[CD/USB ISOイメージ] をクリックする。</strong>
+<a class="reference external" href="https://www.debian.org/">https://www.debian.org/</a></p>
+<img alt="_images/Debianインストール1.PNG" src="_images/Debianインストール1.PNG" />
+<p><strong>２. DebianのCDページにて「HTTPを使って CD/DVD イメージをダウンロードする。」をクリックする。</strong></p>
+<img alt="_images/Debianインストール2.PNG" src="_images/Debianインストール2.PNG" />
+<p><strong>３.ダウンロード先を指定して[保存]する。</strong></p>
+<img alt="_images/Debianインストール3.PNG" src="_images/Debianインストール3.PNG" />
+<img alt="_images/Debianインストール4.PNG" src="_images/Debianインストール4.PNG" />
+<img alt="_images/Debianインストール5.PNG" src="_images/Debianインストール5.PNG" />
+<img alt="_images/Debianインストール6.PNG" src="_images/Debianインストール6.PNG" />
+<img alt="_images/Debianインストール7.PNG" src="_images/Debianインストール7.PNG" />
+<img alt="_images/Debianインストール8.PNG" src="_images/Debianインストール8.PNG" />
+<img alt="_images/Debianインストール9.PNG" src="_images/Debianインストール9.PNG" />
+<img alt="_images/Debianインストール10.PNG" src="_images/Debianインストール10.PNG" />
+<img alt="_images/Debianインストール21.PNG" src="_images/Debianインストール21.PNG" />
+<img alt="_images/Debianインストール22.PNG" src="_images/Debianインストール22.PNG" />
+<img alt="_images/Debianインストール23.PNG" src="_images/Debianインストール23.PNG" />
+<img alt="_images/Debianインストール24.PNG" src="_images/Debianインストール24.PNG" />
+<img alt="_images/Debianインストール25.PNG" src="_images/Debianインストール25.PNG" />
+<img alt="_images/Debianインストール26.PNG" src="_images/Debianインストール26.PNG" />
+<img alt="_images/Debianインストール27.PNG" src="_images/Debianインストール27.PNG" />
+<img alt="_images/Debianインストール28.PNG" src="_images/Debianインストール28.PNG" />
+<img alt="_images/Debianインストール29.PNG" src="_images/Debianインストール29.PNG" />
+<img alt="_images/Debianインストール30.PNG" src="_images/Debianインストール30.PNG" />
+<img alt="_images/Debianインストール31.PNG" src="_images/Debianインストール31.PNG" />
+<img alt="_images/Debianインストール32.PNG" src="_images/Debianインストール32.PNG" />
+<img alt="_images/Debianインストール33.PNG" src="_images/Debianインストール33.PNG" />
+<img alt="_images/Debianインストール34.PNG" src="_images/Debianインストール34.PNG" />
+<img alt="_images/Debianインストール35.PNG" src="_images/Debianインストール35.PNG" />
+<img alt="_images/Debianインストール36.PNG" src="_images/Debianインストール36.PNG" />
+<img alt="_images/Debianインストール37.PNG" src="_images/Debianインストール37.PNG" />
+<img alt="_images/Debianインストール38.PNG" src="_images/Debianインストール38.PNG" />
+<img alt="_images/Debianインストール39.PNG" src="_images/Debianインストール39.PNG" />
+<img alt="_images/Debianインストール40.PNG" src="_images/Debianインストール40.PNG" />
+<img alt="_images/Debianインストール41.PNG" src="_images/Debianインストール41.PNG" />
+<img alt="_images/Debianインストール42.PNG" src="_images/Debianインストール42.PNG" />
+<img alt="_images/Debianインストール43.PNG" src="_images/Debianインストール43.PNG" />
+<img alt="_images/Debianインストール44.PNG" src="_images/Debianインストール44.PNG" />
+<img alt="_images/Debianインストール45.PNG" src="_images/Debianインストール45.PNG" />
+<img alt="_images/Debianインストール46.PNG" src="_images/Debianインストール46.PNG" />
+<img alt="_images/Debianインストール47.PNG" src="_images/Debianインストール47.PNG" />
+<img alt="_images/Debianインストール48.PNG" src="_images/Debianインストール48.PNG" />
+<img alt="_images/Debianインストール49.PNG" src="_images/Debianインストール49.PNG" />
+<img alt="_images/Debianインストール50.PNG" src="_images/Debianインストール50.PNG" />
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="WindowsServer_Install.html" title="WindowsServerインストール"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="CentOS7_Install.html" title="CentOS 7"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">manual 0.1 ドキュメント</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, nyproject.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3 で生成しました。
+    </div>
+  </body>
+</html>
